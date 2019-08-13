@@ -11,7 +11,7 @@ app.use('/graphql',expressGraphQL({
 //its a development tool and its only intended for development enviroment
 
 app.get('/hi',(req,res)=>{
-  return  console.log('hellows');
+  return  console.log('hellowshit');
     
 })
 app.listen(_port,()=>{
