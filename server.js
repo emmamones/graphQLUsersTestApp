@@ -4,7 +4,6 @@ const _port =4000;
 
 //comment from laptop as genesisemmloh vsCode
 //comment from laptop as genesisemmloh vsCode
-//comment from laptop as punky vsCode
 const app= express();
 
 app.use('/graphql',expressGraphQL({
