@@ -38,7 +38,7 @@ const RootQuery = new GraphQLObjectType({
             }
         }
     }
-})
+});
 
 //merge the objects into one schema
 module.exports= new GraphQLSchema({
