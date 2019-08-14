@@ -3,7 +3,7 @@ const expressGraphQL = require('express-graphql');
 const _port =4000;
 
 //comment from laptop as genesisemmloh vsCode
-
+//comment from laptop as genesisemmloh vsCode
 const app= express();
 
 app.use('/graphql',expressGraphQL({
