@@ -1,12 +1,12 @@
 const express = require('express');
 const expressGraphQL = require('express-graphql');
+const schema = require('./schema/schema');
 const _port =4000;
-
-//comment from laptop as genesisemmloh vsCode
-//comment from laptop as genesisemmloh vsCode
+ 
 const app= express();
 
 app.use('/graphql',expressGraphQL({
+    schema,
     graphiql:true
 }));
 //its a development tool and its only intended for development enviroment
@@ -16,5 +16,5 @@ app.get('/hi',(req,res)=>{
     
 })
 app.listen(_port,()=>{
-    console.log('listening')
+    console.log('listening !!')
 })
