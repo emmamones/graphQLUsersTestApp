@@ -5,14 +5,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "servidor":"nodemon ./server.js"
+    "servidor": "nodemon ./server.js",
+    "json:servidor": "json-server --watch db.json --port 5000"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.19.0",
     "express": "^4.17.1",
     "express-graphql": "^0.9.0",
     "graphql": "^14.4.2",
+    "json-server": "^0.15.0",
     "lodash": "^4.17.15",
     "nodemon": "^1.19.1"
   },

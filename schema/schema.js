@@ -1,10 +1,8 @@
 const graphql = require('graphql');
-const _ = require('lodash');//help to walk through collections of Data
-const { GraphQLObjectType, GraphQLString, GraphQLInt,GraphQLSchema} = graphql;
-const users = [
-    { id: '23', firstName: 'Bill', age:'20' },
-    { id: '47', firstName: 'Samantha', age:'21' }
-];
+const axios = require('axios');
+
+const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLSchema } = graphql;
+
 
 const UserType = new GraphQLObjectType(
     {
@@ -14,14 +12,20 @@ const UserType = new GraphQLObjectType(
             firstName: { type: GraphQLString },
             age: { type: GraphQLInt }
         }
-    },
+    }
+);
+
+const CompanyType = new GraphQLObjectType(
     {
         name: 'Company',
         fields: {
             id: { type: GraphQLString },
-            name: { type: GraphQLString }
+            name: { type: GraphQLString },
+            description: { type: GraphQLString }
+
         }
-    });
+    }
+);
 
 //use to allowed grapql to enter our applications data graph
 //resolve function its use to return the data from DB.
@@ -32,15 +36,16 @@ const RootQuery = new GraphQLObjectType({
             type: UserType,
             args: { id: { type: GraphQLString } },
             resolve(parentValue, args) {
-                return users.find(user => user.id == args.id);
-                //using loadash
-                //_.find(users,{id:args.id});
+                return axios.get(`http://localhost:5000/users/${args.id}`).then(response => {
+                    return response.data;
+                })
+
             }
         }
     }
 });
 
 //merge the objects into one schema
-module.exports= new GraphQLSchema({
-    query:RootQuery
+module.exports = new GraphQLSchema({
+    query: RootQuery
 })
